@@ -1,6 +1,4 @@
 from pprint import pprint
-from sys import path
-
 from variables import *
 from urls import url_parcer
 from page_controller import page_controller
@@ -27,11 +25,7 @@ def main(environ, start_response):
 		else [bytes(f'WSGI Framework Start Page \n <br> {environ}', encoding='utf-8')]
 
 
-
-
-
-
-
+""" Упрощенный вариант page_controller(). """
 # def page_controller(current_url, request_method='GET'):
 # 	""" Function get URL, REQUEST_METHOD and return Page. """
 #
@@ -43,9 +37,5 @@ def main(environ, start_response):
 # 		return [b'Hello world from a simple WSGI application!'
 # 				b'  About Page']
 # 	else:
-# 		return  # [b'Hello world from a simple WSGI application! '
-#
-#
-# # b'  Page Not Found']
-
-
+# 		return [b'Hello world from a simple WSGI application! '
+# 				 b'Page Not Found']
