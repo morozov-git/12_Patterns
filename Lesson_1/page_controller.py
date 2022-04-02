@@ -1,6 +1,6 @@
 from jinja2 import Template, Environment, FileSystemLoader, select_autoescape
 from urls import urls
-
+from variables import *
 
 def page_controller(current_url, request_method='GET'):
 	""" Function get URL, REQUEST_METHOD and return Page. """
@@ -10,9 +10,9 @@ def page_controller(current_url, request_method='GET'):
 		page_name = page.get('name')
 		page_template = page.get('template')
 		page_html = render(page_template, page_name=page_name)
-		return page_html
+		return page_html, RESPONSE_200
 	except KeyError:
-		return render('page_not_found.html', page_name='page_not_found')
+		return render('page_not_found.html', page_name='page_not_found'), RESPONSE_404
 
 
 # # print('page_controller() URL', '--', current_url)

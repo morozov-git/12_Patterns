@@ -17,13 +17,14 @@ def main(environ, start_response):
 	# дополнительных параметров
 	current_url, message_from_url = url_parcer(environ.get('PATH_INFO'))
 	# Получаем HTML страницу соответствующую URL (далее реализуем еще по Методу)
-	page = bytes(page_controller(current_url, request_method), encoding='utf-8')
+	page, response_code = page_controller(current_url, request_method)
 	print('PAGE: ', page)
 
-	start_response(RESPONSE_200, [('Content-Type', 'text/html')])
+	start_response(response_code, [('Content-Type', 'text/html')])
 	print(start_response)
 
-	return [page] if page else [bytes(f'WSGI Framework Start Page \n <br> {environ}', encoding='utf-8')]
+	return [bytes(page, encoding='utf-8')] if page \
+		else [bytes(f'WSGI Framework Start Page \n <br> {environ}', encoding='utf-8')]
 
 
 
