@@ -1,7 +1,5 @@
-import os
 from jinja2 import Template, Environment, FileSystemLoader, select_autoescape
 from urls import urls
-
 
 
 def page_controller(current_url, request_method='GET'):
@@ -17,15 +15,15 @@ def page_controller(current_url, request_method='GET'):
 		return render('page_not_found.html', page_name='page_not_found')
 
 
-	# # print('page_controller() URL', '--', current_url)
-	# if current_url == '/':
-	# 	return [b'Hello world from a simple WSGI application!'
-	# 			b'  Index Page']
-	# elif current_url == '/about/':
-	# 	return [b'Hello world from a simple WSGI application!'
-	# 			b'  About Page']
-	# else:
-	# 	return  # [b'Hello world from a simple WSGI application! '
+# # print('page_controller() URL', '--', current_url)
+# if current_url == '/':
+# 	return [b'Hello world from a simple WSGI application!'
+# 			b'  Index Page']
+# elif current_url == '/about/':
+# 	return [b'Hello world from a simple WSGI application!'
+# 			b'  About Page']
+# else:
+# 	return  # [b'Hello world from a simple WSGI application! '
 
 
 def render(template_name, **kwargs):
@@ -40,7 +38,6 @@ def render(template_name, **kwargs):
 	template = env.get_template(template_name)
 	# Возвращаем шаблон с подставленными полями
 	return template.render(**kwargs)
-
 
 
 if __name__ == '__main__':
