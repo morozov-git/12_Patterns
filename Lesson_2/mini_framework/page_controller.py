@@ -1,18 +1,19 @@
-from jinja2 import Template, Environment, FileSystemLoader, select_autoescape
-from urls import urls
-from variables import *
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+from mini_framework.urls import my_urls
+from mini_framework.variables import RESPONSE_200, RESPONSE_404, DefaultTemplatePath
 
-def page_controller(current_url, request_method='GET'):
+def page_controller(current_url, request_method='GET', template_path=DefaultTemplatePath) -> object:
 	""" Function get URL, REQUEST_METHOD and return Page. """
+
 	try:
-		page = urls[current_url]
+		page = my_urls[current_url]
 		page_path = page.get('path')
 		page_name = page.get('name')
-		page_template = page.get('template')
-		page_html = render(page_template, page_name=page_name)
+		page_template = page.get('template_name')
+		page_html = render(page_template, page_name=page_name, template_path=template_path)
 		return page_html, RESPONSE_200
 	except KeyError:
-		return render('page_not_found.html', page_name='page_not_found'), RESPONSE_404
+		return render('page_not_found.html', page_name='page_not_found', template_path=template_path), RESPONSE_404
 
 
 # # print('page_controller() URL', '--', current_url)
@@ -26,12 +27,12 @@ def page_controller(current_url, request_method='GET'):
 # 	return  # [b'Hello world from a simple WSGI application! '
 
 
-def render(template_name, **kwargs):
+def render(template_name, template_path=DefaultTemplatePath,  **kwargs):
 	""" Загрузка HTML страницы из шаблонов и подстановка параметров. """
 
 	# Загружаем шаблоны
 	env = Environment(
-		loader=FileSystemLoader('Templates'),
+ 		loader=FileSystemLoader(template_path),
 		autoescape=select_autoescape(['html', 'xml'])
 	)
 	# Получаем итоговый шаблон
