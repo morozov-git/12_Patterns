@@ -2,7 +2,7 @@ from pprint import pprint
 from mini_framework.urls import url_parcer
 from mini_framework.page_controller import page_controller
 from mini_framework.variables import RESPONSE_200, RESPONSE_404
-
+from mini_framework.request import RequestWSGI
 
 class WsgiMiniFramework:
 	""" WSGI server run. """
@@ -12,7 +12,11 @@ class WsgiMiniFramework:
 		pprint(environ)
 		print('METHOD: ', environ['REQUEST_METHOD'], ', URL: ', environ['PATH_INFO'], sep='')
 		# print(environ.get('PATH_INFO'))
-		request_method = environ['REQUEST_METHOD']
+
+		request = RequestWSGI(environ)
+
+		# request_method = environ['REQUEST_METHOD']
+		request_method = request.method
 		# отапрвляем 'PATH_INFO' на разбор для пполученя унифицированного URL вида: /about/ и
 		# дополнительных параметров
 		current_url, message_from_url = url_parcer(environ.get('PATH_INFO'))
