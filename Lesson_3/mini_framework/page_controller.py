@@ -2,6 +2,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from mini_framework.urls import my_urls
 from mini_framework.variables import RESPONSE_200, RESPONSE_404, DefaultTemplatePath
 
+
 def page_controller(current_url, request_method='GET', template_path=DefaultTemplatePath) -> object:
 	""" Function get URL, REQUEST_METHOD and return Page. """
 
@@ -27,12 +28,12 @@ def page_controller(current_url, request_method='GET', template_path=DefaultTemp
 # 	return  # [b'Hello world from a simple WSGI application! '
 
 
-def render(template_name, template_path=DefaultTemplatePath,  **kwargs):
+def render(template_name, template_path=DefaultTemplatePath, **kwargs):
 	""" Загрузка HTML страницы из шаблонов и подстановка параметров. """
 
 	# Загружаем шаблоны
 	env = Environment(
- 		loader=FileSystemLoader(template_path),
+		loader=FileSystemLoader(template_path),
 		autoescape=select_autoescape(['html', 'xml'])
 	)
 	# Получаем итоговый шаблон
