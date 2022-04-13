@@ -1,6 +1,7 @@
-my_urls = {
+default_urls = {
 	'/': dict(path='/', name='Index', template_name='index.html'),
 	'/about/': dict(path='/about/', name='About', template_name='about.html'),
+	'/contacts/': dict(path='/contacts/', name='Contacts', template_name='contacts.html'),
 }
 
 
@@ -29,12 +30,12 @@ def url_parcer(url='/'):
 
 
 if __name__ == '__main__':
-	print(my_urls['/']['name'])
+	print(urls['/']['name'])
 	try:
-		print(my_urls['sfas'])
+		print(urls['sfas'])
 	except:
 		print("KeyError: urls['sfas']")
-	print(my_urls['/about/'].get('temtlate'))
+	print(urls['/about/'].get('temtlate'))
 
 	current_url = '/about/adfas/FGHHGFd/?=bcfwvhweiHHGDJ'
 	print(url_parcer(current_url))

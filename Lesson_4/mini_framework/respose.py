@@ -1,5 +1,5 @@
 from webob import Response
-from mini_framework.variables import RESPONSE_200, RESPONSE_404
+from variables import RESPONSE_200, RESPONSE_404
 
 
 class ResponseWSGI:

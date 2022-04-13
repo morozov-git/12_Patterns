@@ -1,11 +1,31 @@
 from pprint import pprint
-from mini_framework.urls import url_parcer
-from mini_framework.page_controller import page_controller
-from mini_framework.variables import RESPONSE_200, RESPONSE_404
-from mini_framework.request import RequestWSGI
+import os
+import sys
+# sys.path
+# path = os.path.dirname(__file__)
+# print(path)
+# sys.path.append('./')
+# sys.path.append('.../')
+# sys.path.append(os.path.join(sys.path[0], '../'))
+# print(sys.path)
+# dir_path = os.path.dirname(os.path.realpath(__file__))
+# print(dir_path)
+# sys.path[0] = dir_path
+# print(sys.path)
+# sys.path.insert(0, os.path.split(dir_path)[0])
+from urls import url_parcer, default_urls
+from page_controller import page_controller
+
+from variables import RESPONSE_200, RESPONSE_404, DefaultTemplatesPath
+from request import RequestWSGI
+
 
 class WsgiMiniFramework:
 	""" WSGI server run. """
+
+	def __init__(self, templates_path=DefaultTemplatesPath, urls=default_urls):
+		self.templates_path = templates_path
+		self.urls = urls
 
 	def __call__(self, environ, start_response):
 
@@ -24,7 +44,7 @@ class WsgiMiniFramework:
 		page = None
 		response_code = RESPONSE_200
 		try:
-			page, response_code = page_controller(current_url, request_method)
+			page, response_code = page_controller(current_url, request_method, self.templates_path, self.urls)
 		except:
 			pass
 		print('PAGE: ', page)
@@ -34,19 +54,3 @@ class WsgiMiniFramework:
 
 		return [bytes(page, encoding='utf-8')] if page \
 			else [bytes(f'WSGI Framework Start Page \n <br> {environ}', encoding='utf-8')]
-
-
-""" Упрощенный вариант page_controller(). """
-# def page_controller(current_url, request_method='GET'):
-# 	""" Function get URL, REQUEST_METHOD and return Page. """
-#
-# 	# print('page_controller() URL', '--', current_url)
-# 	if current_url == '/':
-# 		return [b'Hello world from a simple WSGI application!'
-# 				b'  Index Page']
-# 	elif current_url == '/about/':
-# 		return [b'Hello world from a simple WSGI application!'
-# 				b'  About Page']
-# 	else:
-# 		return [b'Hello world from a simple WSGI application! '
-# 				 b'Page Not Found']
