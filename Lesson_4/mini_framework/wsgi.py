@@ -27,6 +27,13 @@ class WsgiMiniFramework:
 		self.templates_path = templates_path
 		self.urls = urls
 
+		# try:
+		# 	self.view = urls.get('view')
+		# 	print(urls)
+		# 	print(self.view, '---' * 10, 'user_view')
+		# except:
+		# 	pass
+
 	def __call__(self, environ, start_response):
 
 		pprint(environ)
@@ -34,7 +41,10 @@ class WsgiMiniFramework:
 		# print(environ.get('PATH_INFO'))
 
 		request = RequestWSGI(environ)
-
+		print(request, '----- WSGI request -----')
+		# print('---' * 10, 'user_view')
+		# # view = self.view
+		# print(view)
 		# request_method = environ['REQUEST_METHOD']
 		request_method = request.method
 		# отапрвляем 'PATH_INFO' на разбор для пполученя унифицированного URL вида: /about/ и
@@ -44,7 +54,7 @@ class WsgiMiniFramework:
 		page = None
 		response_code = RESPONSE_200
 		try:
-			page, response_code = page_controller(current_url, request_method, self.templates_path, self.urls)
+			page, response_code = page_controller(current_url, request, self.templates_path, self.urls)
 		except:
 			pass
 		print('PAGE: ', page)

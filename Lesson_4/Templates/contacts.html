@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-
-<form method="post">
-    <div><input type="text" name="email" placeholder="email" required></div>
-    <div><input type="text" name="title" placeholder="Тема сообщения" required></div>
-    <div><textarea name="text" placeholder="Текст сообщения" required></textarea></div>
-    <button type="submit">Отправить</button>
-</form>
+    {% if context.message == None %}
+        <form method="post">
+            <div><input type="text" name="email" placeholder="email" required></div>
+            <div><input type="text" name="title" placeholder="Тема сообщения" required></div>
+            <div><textarea name="text" placeholder="Текст сообщения" required></textarea></div>
+            <button type="submit">Отправить</button>
+        </form>
+    {% else %}
+        <div> {{context.message}} </div>
+    {% endif %}
 {% endblock %}
