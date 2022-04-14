@@ -3,7 +3,6 @@ import time
 import sys
 import os
 from variables import LOGGER_ON, DefaultLoggingPath, Conosole_Log, File_Log
-import logging
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(dir_path)
@@ -13,8 +12,6 @@ class Logger_Wsgi:
 
 	def __init__(self):
 		self.logger_on = LOGGER_ON
-		# self.console_log = Conosole_Log
-		# self.file_log = File_Log
 		self.log_path = DefaultLoggingPath
 		frame = inspect.stack()[1]
 		module = inspect.getmodule(frame[0])
@@ -29,10 +26,6 @@ class Logger_Wsgi:
 		self.logging_level = logging_level
 		self.console_log = console_log
 		self.file_log = file_log
-		# if console_log is not None and console_log != self.console_log:
-		# 	self.console_log = console_log
-		# if file_log is not None:
-		# 	self.file_log = file_log
 
 		logging_message = f'{self.current_time}, ' \
 						  f'{self.logging_level}, ' \
