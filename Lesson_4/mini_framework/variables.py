@@ -14,7 +14,7 @@ RESPONSE_404 = '404 Not Found'
 DefaultTemplatesPath = 'Templates'
 
 # Logger settings
-LOGGER_ON = True
+LOGGER_ON = True 	# False
 Conosole_Log = True
 File_Log = True
 DefaultLoggingPath = 'Logging'
