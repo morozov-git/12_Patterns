@@ -30,12 +30,12 @@ def url_parcer(url='/'):
 
 
 if __name__ == '__main__':
-	print(urls['/']['name'])
+	print(default_urls['/']['name'])
 	try:
-		print(urls['sfas'])
+		print(default_urls['sfas'])
 	except:
 		print("KeyError: urls['sfas']")
-	print(urls['/about/'].get('temtlate'))
+	print(default_urls['/about/'].get('temtlate'))
 
 	current_url = '/about/adfas/FGHHGFd/?=bcfwvhweiHHGDJ'
 	print(url_parcer(current_url))

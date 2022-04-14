@@ -6,7 +6,7 @@ from mini_framework.page_controller import page_controller, render_template
 
 
 class Index:
-	print('---- my view ----')
+	# print('---- my view ----')
 
 	def run(self, page, path, request):
 		print(page, path, request, '-------- Index.run() args --------')
@@ -44,7 +44,6 @@ class Contacts:
 		}
 		# 'message': None
 		print(page, path, request, '-------- Contacts.run() args --------')
-		# print(page, path, '-------- About.run() args --------')
 
 		try:
 			if request.method == 'POST':
