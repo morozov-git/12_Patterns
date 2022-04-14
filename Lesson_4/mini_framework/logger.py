@@ -9,12 +9,9 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(dir_path)
 
 
-
 class Logger_Wsgi:
 
-	def __init__(self, message='message', logging_level='debug'):
-		self.message = message
-		self.logging_level = logging_level
+	def __init__(self):
 		self.logger_on = LOGGER_ON
 		self.console_log = Conosole_Log
 		self.file_log = File_Log
@@ -26,25 +23,33 @@ class Logger_Wsgi:
 		self.current_time = time.strftime("%Y-%m-%d-%H.%M.%S", time.localtime())
 		self.current_day = self.current_time[:-9:]
 
-	def get_logger(self):
-		logging_meesage = f'test'
-		pass
+	def get_logger(self, message=None, logging_level='DEBUG'):
+		self.message = message
+		self.logging_level = logging_level
 
+		logging_message = f'{self.current_time}, ' \
+						  f'{self.logging_level}, ' \
+						  f'{self.file_name}, ' \
+						  f'{self.module_name}, ' \
+						  f'{self.message}\n'
+		if self.logger_on:
+			if self.console_log:
+				print(logging_message)
+			if self.file_log:
+				self.file_save(logging_message)
+		else:
+			print('Logger_WSGI is OFF')
 
-
-
-# current_day = time.strftime("%Y-%m-%d--", time.localtime())
-# current_time = time.strftime("%Y-%m-%d-%H.%M.%S -- ", time.localtime())
-# with open(f'Logging/{current_day}logger.txt', 'a', encoding='utf-8') as log_file:
-# 	log_file.write(f"{current_time} Message\n"
-# 						f" 	Email: {''.join(input_message['email'])},\n"
-# 						f" 	Title: {''.join(input_message['title'])},\n"
-# 						f"	Text: {''.join(input_message['text'])}. \n")
+	def file_save(self, logging_message):
+		try:
+			with open(f'Logging/{self.current_day}-logger.txt', 'a', encoding='utf-8') as log_file:
+				log_file.write(logging_message)
+		except:
+			print(f'Logger_WSGI can not write to file: {self.current_day}-logger.txt')
 
 
 if __name__ == '__main__':
-
 	logger = Logger_Wsgi()
-	print(logger.current_time, logger.current_day, logger.filename, logger.module)
-	print(logger.module)
-	print(logger.filename)
+	logger.get_logger(message='test logger', logging_level='info')
+	print(logger.module_name)
+	print(logger.file_name)
