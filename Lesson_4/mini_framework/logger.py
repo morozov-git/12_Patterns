@@ -23,9 +23,14 @@ class Logger_Wsgi:
 		self.current_time = time.strftime("%Y-%m-%d-%H.%M.%S", time.localtime())
 		self.current_day = self.current_time[:-9:]
 
-	def get_logger(self, message=None, logging_level='DEBUG'):
+	def get_logger(self, message=None, logging_level='DEBUG', console_log=None, file_log=None):
+
 		self.message = message
 		self.logging_level = logging_level
+		if console_log != None:
+			self.console_log = console_log
+		if file_log != None:
+			self.file_log = file_log
 
 		logging_message = f'{self.current_time}, ' \
 						  f'{self.logging_level}, ' \
@@ -42,7 +47,7 @@ class Logger_Wsgi:
 
 	def file_save(self, logging_message):
 		try:
-			with open(f'Logging/{self.current_day}-logger.txt', 'a', encoding='utf-8') as log_file:
+			with open(f'Logging/{self.current_day}-{self.logging_level}-logger.txt', 'a', encoding='utf-8') as log_file:
 				log_file.write(logging_message)
 		except:
 			print(f'Logger_WSGI can not write to file: {self.current_day}-logger.txt')
@@ -51,5 +56,6 @@ class Logger_Wsgi:
 if __name__ == '__main__':
 	logger = Logger_Wsgi()
 	logger.get_logger(message='test logger', logging_level='info')
+	logger.get_logger(message='test debug logger', logging_level='debug')
 	print(logger.module_name)
 	print(logger.file_name)
