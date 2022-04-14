@@ -18,7 +18,10 @@ from page_controller import page_controller
 
 from variables import RESPONSE_200, RESPONSE_404, DefaultTemplatesPath
 from request import RequestWSGI
+from logger import LoggerWsgi
 
+# Инициализация логгера
+logger = LoggerWsgi()
 
 class WsgiMiniFramework:
 	""" WSGI server run. """
@@ -37,9 +40,7 @@ class WsgiMiniFramework:
 	def __call__(self, environ, start_response):
 
 		pprint(environ)
-		print('METHOD: ', environ['REQUEST_METHOD'], ', URL: ', environ['PATH_INFO'], sep='')
-		# print(environ.get('PATH_INFO'))
-
+		logger.get_logger(message=f"METHOD: {environ['REQUEST_METHOD']}, URL: {environ['PATH_INFO']}")
 		request = RequestWSGI(environ)
 		print(request, '----- WSGI request -----')
 		# print('---' * 10, 'user_view')

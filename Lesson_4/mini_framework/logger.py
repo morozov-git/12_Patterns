@@ -8,7 +8,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(dir_path)
 
 
-class Logger_Wsgi:
+class LoggerWsgi:
 
 	def __init__(self):
 		self.logger_on = LOGGER_ON
@@ -49,7 +49,7 @@ class Logger_Wsgi:
 
 
 if __name__ == '__main__':
-	logger = Logger_Wsgi()
+	logger = LoggerWsgi()
 	logger.get_logger(message='test logger', logging_level='info', console_log=False)
 	logger.get_logger(message='test debug logger', logging_level='debug')
 	print(logger.module_name)
