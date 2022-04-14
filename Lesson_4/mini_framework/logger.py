@@ -13,8 +13,8 @@ class Logger_Wsgi:
 
 	def __init__(self):
 		self.logger_on = LOGGER_ON
-		self.console_log = Conosole_Log
-		self.file_log = File_Log
+		# self.console_log = Conosole_Log
+		# self.file_log = File_Log
 		self.log_path = DefaultLoggingPath
 		frame = inspect.stack()[1]
 		module = inspect.getmodule(frame[0])
@@ -23,14 +23,16 @@ class Logger_Wsgi:
 		self.current_time = time.strftime("%Y-%m-%d-%H.%M.%S", time.localtime())
 		self.current_day = self.current_time[:-9:]
 
-	def get_logger(self, message=None, logging_level='DEBUG', console_log=None, file_log=None):
+	def get_logger(self, message=None, logging_level='DEBUG', console_log=Conosole_Log, file_log=File_Log):
 
 		self.message = message
 		self.logging_level = logging_level
-		if console_log != None:
-			self.console_log = console_log
-		if file_log != None:
-			self.file_log = file_log
+		self.console_log = console_log
+		self.file_log = file_log
+		# if console_log is not None and console_log != self.console_log:
+		# 	self.console_log = console_log
+		# if file_log is not None:
+		# 	self.file_log = file_log
 
 		logging_message = f'{self.current_time}, ' \
 						  f'{self.logging_level}, ' \
@@ -55,7 +57,7 @@ class Logger_Wsgi:
 
 if __name__ == '__main__':
 	logger = Logger_Wsgi()
-	logger.get_logger(message='test logger', logging_level='info')
+	logger.get_logger(message='test logger', logging_level='info', console_log=False)
 	logger.get_logger(message='test debug logger', logging_level='debug')
 	print(logger.module_name)
 	print(logger.file_name)
