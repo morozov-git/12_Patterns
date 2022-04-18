@@ -7,6 +7,8 @@ import traceback
 
 
 def logger_decos(func_to_log):
+	""" Логгер - декоратор, выводит в консоль время выполнения, имя функции и ее аргументы. """
+
 	@functools.wraps(func_to_log)
 	def console_logger(*args, **kwargs):
 		frame = inspect.stack()[1]
