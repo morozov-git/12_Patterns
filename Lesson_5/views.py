@@ -27,7 +27,7 @@ class Index:
 
 
 class About:
-
+	@logger_decos
 	def run(self, page, path, request):
 		# print(page, path, '-------- About.run() args --------')
 		context = {
@@ -41,7 +41,7 @@ class About:
 
 
 class Contacts:
-
+	@logger_decos
 	def run(self, page, path, request):
 		self.context = {
 			'page_name': 'Contact - my view',
@@ -61,7 +61,7 @@ class Contacts:
 		# print(html_render, '------------ my view ----------')
 		return html_render
 
-
+	@logger_decos
 	def post_request(self, request):
 
 		self.context.update({'message': 'Ваше сообщение успешно отправлено'})
