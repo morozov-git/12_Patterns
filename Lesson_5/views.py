@@ -4,16 +4,17 @@ from mini_framework.respose import ResponseWSGI
 from mini_framework.variables import RESPONSE_200, RESPONSE_404
 from mini_framework.page_controller import page_controller, render_template
 from mini_framework.logger import LoggerWsgi
-from mini_framework.logger_decos import Logger_decos
+from mini_framework.logger_decos import logger_decos
 
 logger = LoggerWsgi()
 
-@Logger_decos()
+# @logger_decos
 class Index:
 	# print('---- my view ----')
 
+	@logger_decos
 	def run(self, page, path, request):
-		print(page, path, request, '-------- Index.run() args --------')
+		# print(page, path, request, '-------- Index.run() args --------')
 		context = {
 			'page_name': 'Index - my view',
 			'text': 'test text'
@@ -24,7 +25,7 @@ class Index:
 		# print(html_render, '------------ my view ----------')
 		return html_render
 
-@Logger_decos()
+
 class About:
 
 	def run(self, page, path, request):
@@ -38,7 +39,7 @@ class About:
 		# print(html_render, '------------ my view ----------')
 		return html_render
 
-@Logger_decos()
+
 class Contacts:
 
 	def run(self, page, path, request):
@@ -59,6 +60,7 @@ class Contacts:
 		html_render = render_template(templates_path=path, template_name=page['template_name'], context=self.context)
 		# print(html_render, '------------ my view ----------')
 		return html_render
+
 
 	def post_request(self, request):
 
