@@ -1,3 +1,4 @@
+import functools
 import inspect
 import time
 import sys
@@ -6,6 +7,7 @@ import traceback
 
 
 def logger_decos(func_to_log):
+	@functools.wraps(func_to_log)
 	def console_logger(*args, **kwargs):
 		frame = inspect.stack()[1]
 		module = inspect.getmodule(frame[0])
