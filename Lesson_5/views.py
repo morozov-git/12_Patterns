@@ -4,9 +4,11 @@ from mini_framework.respose import ResponseWSGI
 from mini_framework.variables import RESPONSE_200, RESPONSE_404
 from mini_framework.page_controller import page_controller, render_template
 from mini_framework.logger import LoggerWsgi
+from mini_framework.logger_decos import Logger_decos
 
 logger = LoggerWsgi()
 
+@Logger_decos()
 class Index:
 	# print('---- my view ----')
 
@@ -22,7 +24,7 @@ class Index:
 		# print(html_render, '------------ my view ----------')
 		return html_render
 
-
+@Logger_decos()
 class About:
 
 	def run(self, page, path, request):
@@ -36,7 +38,7 @@ class About:
 		# print(html_render, '------------ my view ----------')
 		return html_render
 
-
+@Logger_decos()
 class Contacts:
 
 	def run(self, page, path, request):
