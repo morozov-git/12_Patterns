@@ -1,18 +1,7 @@
 from pprint import pprint
 import os
 import sys
-# sys.path
-# path = os.path.dirname(__file__)
-# print(path)
-# sys.path.append('./')
-# sys.path.append('.../')
-# sys.path.append(os.path.join(sys.path[0], '../'))
-# print(sys.path)
-# dir_path = os.path.dirname(os.path.realpath(__file__))
-# print(dir_path)
-# sys.path[0] = dir_path
-# print(sys.path)
-# sys.path.insert(0, os.path.split(dir_path)[0])
+
 from urls import url_parcer, default_urls
 from page_controller import page_controller
 
@@ -43,9 +32,7 @@ class WsgiMiniFramework:
 		logger.get_logger(message=f"METHOD: {environ['REQUEST_METHOD']}, URL: {environ['PATH_INFO']}")
 		request = RequestWSGI(environ)
 		print(request, '----- WSGI request -----')
-		# print('---' * 10, 'user_view')
-		# # view = self.view
-		# print(view)
+
 		# request_method = environ['REQUEST_METHOD']
 		request_method = request.method
 		# отапрвляем 'PATH_INFO' на разбор для пполученя унифицированного URL вида: /about/ и
