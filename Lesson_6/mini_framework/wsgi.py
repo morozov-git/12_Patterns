@@ -52,3 +52,6 @@ class WsgiMiniFramework:
 
 		return [bytes(page, encoding='utf-8')] if page \
 			else [bytes(f'WSGI Framework Start Page \n <br> {environ}', encoding='utf-8')]
+
+
+# Евгений, добрый день! Это пока заглушка к 6-у уроку
