@@ -1,0 +1,15 @@
+2022-04-19-00.07.19, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /my-about/
+2022-04-19-00.07.19, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /
+2022-04-19-00.07.19, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /my-about/
+2022-04-19-00.07.19, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /
+2022-04-19-00.07.19, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /
+2022-04-19-00.09.19, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /
+2022-04-19-00.12.27, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /
+2022-04-19-00.12.27, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /favicon.ico
+2022-04-19-00.17.22, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /
+2022-04-19-00.26.30, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /
+2022-04-19-00.26.30, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /my-contacts/
+2022-04-19-00.26.30, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: POST, URL: /my-contacts/
+2022-04-19-00.26.30, DEBUG, views.py, views, {'email': ['sadas'], 'title': ['asdasd'], 'text': ['asdas']}
+2022-04-19-00.26.30, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /
+2022-04-19-00.56.43, DEBUG, wsgi.py, mini_framework.wsgi, METHOD: GET, URL: /

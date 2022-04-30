@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+
+    <title>Base_HTML</title>
+
+    {% endblock %}
+</head>
+
+{% include "menu.html" %}
+
+
+{% block content %}
+    <body>
+
+        <title>Hello world from a simple WSGI application!</title>
+        <div>Base_HTML</div>
+
+
+    </body>
+{% endblock %}
+
+</html>

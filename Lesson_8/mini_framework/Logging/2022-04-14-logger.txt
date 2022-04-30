@@ -1,0 +1,6 @@
+2022-04-14-19.59.57, info, logger.py, __main__, test logger
+2022-04-14-20.00.04, info, logger.py, __main__, test logger
+2022-04-14-20.08.38, info, logger.py, __main__, test logger
+2022-04-14-20.09.05, info, logger.py, __main__, test logger
+2022-04-14-20.10.11, info, logger.py, __main__, test logger
+2022-04-14-20.10.43, info, logger.py, __main__, test logger
