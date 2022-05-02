@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+
+    <title>Index_HTML</title>
+
+{% endblock %}
+
+
+
+{% block content %}
+    <body>
+        <div>Hello world from a simple WSGI application!</div>
+            <div>
+                That is the {{page_name}} {{context.page_name}} page , {{context.text}}.
+            </div>
+    </body>
+{% endblock %}
