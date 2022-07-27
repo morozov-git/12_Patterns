@@ -54,4 +54,6 @@ class WsgiMiniFramework:
 			else [bytes(f'WSGI Framework Start Page \n <br> {environ}', encoding='utf-8')]
 
 
+
 # Евгений, добрый день! Это пока заглушка к 9-у уроку
+
